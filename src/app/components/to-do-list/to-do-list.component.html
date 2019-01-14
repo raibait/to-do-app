@@ -1,0 +1,25 @@
+<div class="container">
+	<div>
+		<p class="list-header">Not important</p>
+		<div class="single-list__not-important">
+			<app-to-do-card *ngFor="let toDo of toDoListNotImportant" [toDo]="toDo"></app-to-do-card>
+			<app-add-card [priority]="priority.notImportant"></app-add-card>
+		</div>
+	</div>
+
+	<div>
+		<p class="list-header">Regular</p>
+		<div class="single-list__regular">
+			<app-to-do-card *ngFor="let toDo of toDoListRegular" [toDo]="toDo"></app-to-do-card>
+			<app-add-card [priority]="priority.regular"></app-add-card>
+		</div>
+	</div>
+
+	<div>
+		<p class="list-header">Important</p>
+		<div class="single-list__important">
+			<app-to-do-card *ngFor="let toDo of toDoListImportant" [toDo]="toDo"></app-to-do-card>
+			<app-add-card [priority]="priority.important"></app-add-card>
+		</div>
+	</div>
+</div>

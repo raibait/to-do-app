@@ -1,0 +1,36 @@
+<mat-expansion-panel #panel hideToggle [expanded]="false">
+	<mat-expansion-panel-header>
+		<mat-icon class="add-icon">add_circle_outline</mat-icon>
+	</mat-expansion-panel-header>
+
+	<form (ngSubmit)="addTask()" #form="ngForm">
+		<mat-form-field>
+			<input
+				id="title"
+				ngModel
+				name="title"
+				matInput
+				placeholder="Task name"
+				required>
+			<mat-error *ngIf="!form.value.title">Taks name required</mat-error>
+		</mat-form-field>
+		<br>
+		<mat-form-field>
+			<textarea
+				id="comment"
+				ngModel
+				name="comment"
+				class="textarea"
+				matTextareaAutosize
+				matAutosizeMinRows="2"
+				matAutosizeMaxRows="4"
+				matInput
+				required placeholder="Comment"></textarea>
+			<mat-error *ngIf="!form.value.comment">Comment required</mat-error>
+		</mat-form-field>
+		<br>
+		<button mat-stroked-button matTooltip="Add task">
+			Add task
+		</button>
+	</form>
+</mat-expansion-panel>

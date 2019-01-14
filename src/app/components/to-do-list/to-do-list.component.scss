@@ -1,0 +1,43 @@
+.container{
+	height: calc(100vh - 64px);
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	overflow: hidden;
+}
+
+.single-list {
+	max-height: 700px;
+	width: 400px;
+	padding: 10px;
+	border: 2px dashed black;
+	margin: 40px;
+	overflow-y: scroll;
+	border-radius: 25px;
+}
+
+.single-list__important {
+	@extend .single-list;
+	border-color: rgba(207, 17, 17, .4);
+
+}
+
+.single-list__regular {
+	@extend .single-list;
+	border-color: rgba(204, 189, 56, .4);
+}
+
+.single-list__not-important {
+	@extend .single-list;
+	border-color: rgba(40, 28, 207, .4);
+}
+
+.single-list::-webkit-scrollbar {
+    display: none;
+}
+
+.list-header {
+	font-weight: bolder;
+	font-size: 24px;
+	text-align: center;
+}
