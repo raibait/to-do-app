@@ -6,43 +6,43 @@ import * as ToDoActions from '../actions/toDo.actions';
 const initialState: ITodo[] = [
 	{
 		id: 0,
-		title: 'Do sth1',
-		comment: 'Do something1 please , quick!',
+		title: 'Walk a dog',
+		comment: 'Fluffy needs a walk.',
 		checked: true,
 		priority: Priority.important
 	},
 	{
 		id: 1,
-		title: 'Do sth2',
-		comment: 'Do something2 please , quick!',
+		title: 'Do the dishes',
+		comment: 'Remember to clean the dishes',
 		checked: false,
 		priority: Priority.important
 	},
 	{
 		id: 2,
-		title: 'Do sth3',
-		comment: 'Do something3 please , quick!',
+		title: 'Do the laundry',
+		comment: 'Fresh clothes needed',
 		checked: true,
 		priority: Priority.regular
 	},
 	{
 		id: 3,
-		title: 'Do sth4',
-		comment: 'Do something4 please , quick!',
+		title: 'Call mom',
+		comment: 'She is always worrying',
 		checked: false,
 		priority: Priority.regular
 	},
 	{
 		id: 4,
-		title: 'Do sth5',
-		comment: 'Do something5 please , quick!',
-		checked: true,
+		title: 'Check an email',
+		comment: 'Still awaiting for that important mail',
+		checked: false,
 		priority: Priority.notImportant
 	},
 	{
 		id: 5,
-		title: 'Do sth6',
-		comment: 'Do something6 please , quick!',
+		title: 'Pay the bills',
+		comment: 'Or they will cut the electricity off!!',
 		checked: false,
 		priority: Priority.notImportant
 	}
