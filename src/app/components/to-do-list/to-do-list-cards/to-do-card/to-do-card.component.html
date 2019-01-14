@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card" [ngStyle]="toDo.checked && {'background-color': '#fafafa'}" >
 	<mat-checkbox class="checkbox" (change)="toggleCheck()" [checked]="toDo.checked">Done</mat-checkbox>
 	<mat-icon class="delButton" (click)="deleteToDo()" matTooltip="Delete task">delete_outline</mat-icon>
 	<mat-card-title>
