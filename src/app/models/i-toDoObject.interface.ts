@@ -4,5 +4,5 @@ import { Priority } from './priority.enum';
 export interface IToDoObject {
 	[Priority.notImportant]: IToDo[];
 	[Priority.regular]: IToDo[];
-	[Priority.important]:  IToDo[];
+	[Priority.important]: IToDo[];
 }

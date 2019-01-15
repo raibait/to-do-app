@@ -20,6 +20,9 @@ import {
 import { StoreModule } from '@ngrx/store';
 import { toDoReducer } from './reducers/toDo.reducer';
 
+import { EffectsModule } from '@ngrx/effects';
+import { ToDoEffects } from './effects/toDo.effects';
+
 import { AppComponent } from './app.component';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
 import { AddCardComponent } from './components/to-do-list/to-do-list-cards/add-card/add-card.component';
@@ -48,7 +51,8 @@ import { ToDoCardComponent } from './components/to-do-list/to-do-list-cards/to-d
 		DragDropModule,
 		StoreModule.forRoot({
 			toDoObject: toDoReducer
-		})
+		}),
+		EffectsModule.forRoot([ToDoEffects])
 	],
 	providers: [],
 	bootstrap: [AppComponent]

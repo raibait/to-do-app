@@ -22,6 +22,7 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 	public toDoObject: IToDoObject;
 
 	constructor(private store: Store<AppState>) {
+		this.store.dispatch(new ToDoActions.FetchTodos());
 		this.subscription = store.select('toDoObject').subscribe((val) => this.toDoObject = val);
 	}
 
