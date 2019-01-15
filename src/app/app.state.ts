@@ -1,5 +1,5 @@
-import { ITodo } from './models/i-toDo.interface';
+import { IToDoObject } from './models/i-toDoObject.interface';
 
 export interface AppState {
-	readonly todoList: ITodo[];
+	readonly toDoObject: IToDoObject;
 }

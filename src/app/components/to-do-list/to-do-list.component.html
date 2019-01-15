@@ -1,24 +1,60 @@
-<div class="container">
+<div class="container" cdkDropListGroup>
 	<div>
-		<p class="list-header">Not important</p>
-		<div class="single-list__not-important">
-			<app-to-do-card *ngFor="let toDo of toDoListNotImportant" [toDo]="toDo"></app-to-do-card>
+		<h2 class="list-header">Not important</h2>
+
+		<div
+			cdkDropList
+			#notImportantList="cdkDropList"
+			[cdkDropListData]="toDoObject.notImportant"
+			class="single-list__not-important"
+			(cdkDropListDropped)="drop($event)">
+			<app-to-do-card
+				class="card-box"
+				*ngFor="let toDo of toDoObject.notImportant"
+				[toDo]="toDo"
+				[priority]="priority.notImportant"
+				cdkDrag>
+			</app-to-do-card>
 			<app-add-card [priority]="priority.notImportant"></app-add-card>
 		</div>
 	</div>
 
 	<div>
-		<p class="list-header">Regular</p>
-		<div class="single-list__regular">
-			<app-to-do-card *ngFor="let toDo of toDoListRegular" [toDo]="toDo"></app-to-do-card>
+		<h2 class="list-header">Regular</h2>
+
+		<div
+			cdkDropList
+			#regularList="cdkDropList"
+			[cdkDropListData]="toDoObject.regular"
+			class="single-list__regular"
+			(cdkDropListDropped)="drop($event)">
+			<app-to-do-card
+				class="card-box"
+				*ngFor="let toDo of toDoObject.regular"
+				[toDo]="toDo"
+				[priority]="priority.regular"
+				cdkDrag>
+			</app-to-do-card>
 			<app-add-card [priority]="priority.regular"></app-add-card>
 		</div>
 	</div>
 
 	<div>
-		<p class="list-header">Important</p>
-		<div class="single-list__important">
-			<app-to-do-card *ngFor="let toDo of toDoListImportant" [toDo]="toDo"></app-to-do-card>
+		<h2 class="list-header">Important</h2>
+
+		<div
+			cdkDropList
+			#importantList="cdkDropList"
+			[cdkDropListData]="toDoObject.important"
+			class="single-list__important"
+			(cdkDropListDropped)="drop($event)">
+			<app-to-do-card
+				class="card-box"
+				*ngFor="let toDo of toDoObject.important"
+				[toDo]="toDo"
+				[priority]="priority.important"
+				cdkDrag>
+			</app-to-do-card>
 			<app-add-card [priority]="priority.important"></app-add-card>
 		</div>
 	</div>

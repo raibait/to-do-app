@@ -2,9 +2,11 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { NgForm } from '@angular/forms';
 
+import { MatExpansionPanel } from '@angular/material/expansion';
+
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
-import { Priority } from '../../../../models/i-toDo.interface';
+import { Priority } from '../../../../models/priority.enum';
 
 import * as ToDoActions from '../../../../actions/toDo.actions';
 
@@ -16,7 +18,7 @@ import * as ToDoActions from '../../../../actions/toDo.actions';
 export class AddCardComponent implements OnInit {
 
 	@ViewChild('form') form: NgForm;
-	@ViewChild('panel') panel;
+	@ViewChild('panel') panel: MatExpansionPanel;
 
 	@Input() priority: Priority;
 
@@ -29,9 +31,11 @@ export class AddCardComponent implements OnInit {
 		if (this.form.valid) {
 			this.panel.close();
 			this.store.dispatch(new ToDoActions.AddToDo({
-				title: this.form.value.title,
-				comment: this.form.value.comment,
-				checked: false,
+				toDo: {
+					title: this.form.value.title,
+					comment: this.form.value.comment,
+					checked: false
+				},
 				priority: this.priority
 			}));
 			this.form.resetForm();

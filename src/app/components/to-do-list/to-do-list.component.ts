@@ -1,11 +1,12 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 import { ISubscription } from 'rxjs/Subscription';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../../app.state';
-import { ITodo } from '../../models/i-toDo.interface';
-import { Priority } from '../../models/i-toDo.interface';
+import { IToDoObject } from '../../models/i-toDoObject.interface';
+import { Priority } from '../../models/priority.enum';
 import * as ToDoActions from '../../actions/toDo.actions';
 
 @Component({
@@ -18,16 +19,10 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 	private subscription: ISubscription;
 
 	public priority = Priority;
-	public toDoListImportant: ITodo[];
-	public toDoListRegular: ITodo[];
-	public toDoListNotImportant: ITodo[];
+	public toDoObject: IToDoObject;
 
 	constructor(private store: Store<AppState>) {
-		this.subscription = store.select('toDoList').subscribe((val) => {
-			this.toDoListImportant = val.filter((toDo) => toDo.priority === this.priority.important);
-			this.toDoListRegular = val.filter((toDo) => toDo.priority === this.priority.regular);
-			this.toDoListNotImportant = val.filter((toDo) => toDo.priority === this.priority.notImportant);
-		});
+		this.subscription = store.select('toDoObject').subscribe((val) => this.toDoObject = val);
 	}
 
 	ngOnInit() { }
@@ -36,7 +31,13 @@ export class ToDoListComponent implements OnInit, OnDestroy {
 		this.subscription.unsubscribe();
 	}
 
-	removeTodo(index: number) {
-		this.store.dispatch(new ToDoActions.RemoveToDo(index));
+	drop(event: CdkDragDrop<string[]>) {
+		if (event.previousContainer === event.container) {
+			moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+		} else {
+			transferArrayItem(event.previousContainer.data,	event.container.data, event.previousIndex, event.currentIndex);
+		}
+		this.store.dispatch(new ToDoActions.UpdateTodoObject(this.toDoObject));
 	}
+
 }

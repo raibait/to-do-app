@@ -1,4 +1,4 @@
-<mat-card class="card" [ngStyle]="toDo.checked && {'background-color': '#fafafa'}" >
+<mat-card [ngClass]="toDo.checked ? 'card__checked' : 'card'">
 	<mat-checkbox class="checkbox" (change)="toggleCheck()" [checked]="toDo.checked">Done</mat-checkbox>
 	<mat-icon class="delButton" (click)="deleteToDo()" matTooltip="Delete task">delete_outline</mat-icon>
 	<mat-card-title>
@@ -7,34 +7,4 @@
 	<mat-card-content *ngIf="!toDo.checked">
 		{{toDo.comment}}
 	</mat-card-content>
-	<mat-card-actions class="navButtons">
-		<ng-container *ngIf="toDo.priority === priority.notImportant">
-			<button (click)="moveToRegular()" mat-stroked-button matTooltip="Switch to regular">
-				<mat-icon>navigate_next</mat-icon>
-			</button>
-			<button (click)="moveToImportant()" mat-stroked-button matTooltip="Switch to important">
-				<mat-icon>navigate_next</mat-icon>
-				<mat-icon>navigate_next</mat-icon>
-			</button>
-		</ng-container>
-
-		<ng-container *ngIf="toDo.priority === priority.regular">
-			<button (click)="moveToNotImportant()" mat-stroked-button matTooltip="Switch to not important">
-				<mat-icon>navigate_before</mat-icon>
-			</button>
-			<button (click)="moveToImportant()" mat-stroked-button matTooltip="Switch to important">
-				<mat-icon>navigate_next</mat-icon>
-			</button>
-		</ng-container>
-
-		<ng-container *ngIf="toDo.priority === priority.important">
-			<button (click)="moveToNotImportant()" mat-stroked-button matTooltip="Switch to not important">
-				<mat-icon>navigate_before</mat-icon>
-				<mat-icon>navigate_before</mat-icon>
-			</button>
-			<button (click)="moveToRegular()" mat-stroked-button matTooltip="Switch to regular">
-				<mat-icon>navigate_before</mat-icon>
-			</button>
-		</ng-container>
-	</mat-card-actions>
 </mat-card>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import {
 	MatCardModule,
 	MatButtonModule,
@@ -15,8 +16,9 @@ import {
 	MatToolbarModule
 } from '@angular/material';
 
+
 import { StoreModule } from '@ngrx/store';
-import { toDoReducer } from './reducers/todo.reducer';
+import { toDoReducer } from './reducers/toDo.reducer';
 
 import { AppComponent } from './app.component';
 import { ToDoListComponent } from './components/to-do-list/to-do-list.component';
@@ -43,8 +45,9 @@ import { ToDoCardComponent } from './components/to-do-list/to-do-list-cards/to-d
 		MatFormFieldModule,
 		MatInputModule,
 		MatToolbarModule,
+		DragDropModule,
 		StoreModule.forRoot({
-			toDoList: toDoReducer
+			toDoObject: toDoReducer
 		})
 	],
 	providers: [],

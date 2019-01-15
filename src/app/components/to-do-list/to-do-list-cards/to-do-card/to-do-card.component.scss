@@ -1,10 +1,11 @@
 .card {
 	margin-bottom: 9px;
+	width: 100%;
 }
 
-.navButtons {
-	display: flex;
-	justify-content: space-between;
+.card__checked {
+	@extend .card;
+	background-color: #fafafa;
 }
 
 .delButton {

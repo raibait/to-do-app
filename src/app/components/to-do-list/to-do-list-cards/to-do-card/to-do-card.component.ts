@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../../app.state';
-import { ITodo } from '../../../../models/i-toDo.interface';
-import { Priority } from '../../../../models/i-toDo.interface';
+import { IToDo } from '../../../../models/i-toDo.interface';
+import { Priority } from '../../../../models/priority.enum';
 
 import * as ToDoActions from '../../../../actions/toDo.actions';
 
@@ -14,9 +14,8 @@ import * as ToDoActions from '../../../../actions/toDo.actions';
 })
 export class ToDoCardComponent implements OnInit {
 
-	@Input() toDo: ITodo;
-
-	public priority = Priority;
+	@Input() toDo: IToDo;
+	@Input() priority: Priority;
 
 	constructor(private store: Store<AppState>) { }
 
@@ -24,23 +23,18 @@ export class ToDoCardComponent implements OnInit {
 
 	deleteToDo() {
 		if (confirm('Do you really want to delete this task?')) {
-			this.store.dispatch(new ToDoActions.RemoveToDo(this.toDo.id));
+			this.store.dispatch(new ToDoActions.RemoveToDo({
+				toDo: this.toDo,
+				priority: this.priority
+			}));
 		}
 	}
 
 	toggleCheck() {
-		this.store.dispatch(new ToDoActions.ToggleToDo(this.toDo.id));
+		this.store.dispatch(new ToDoActions.ToggleToDo({
+			toDo: this.toDo,
+			priority: this.priority
+		}));
 	}
 
-	moveToNotImportant() {
-		this.store.dispatch(new ToDoActions.MoveToNotImportant(this.toDo));
-	}
-
-	moveToRegular() {
-		this.store.dispatch(new ToDoActions.MoveToRegular(this.toDo));
-	}
-
-	moveToImportant() {
-		this.store.dispatch(new ToDoActions.MoveToImportant(this.toDo));
-	}
 }
