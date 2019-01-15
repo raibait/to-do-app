@@ -1,6 +1,7 @@
 .card {
 	margin-bottom: 9px;
 	width: 100%;
+	overflow-x: hidden;
 }
 
 .card__checked {
@@ -18,4 +19,9 @@
 .checkbox {
 	position: absolute;
 	right: 60px;
+}
+
+.text {
+	overflow-x: hidden;
+	text-overflow: ellipsis;
 }

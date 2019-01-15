@@ -1,10 +1,10 @@
 <mat-card [ngClass]="toDo.checked ? 'card__checked' : 'card'">
 	<mat-checkbox class="checkbox" (change)="toggleCheck()" [checked]="toDo.checked">Done</mat-checkbox>
 	<mat-icon class="delButton" (click)="deleteToDo()" matTooltip="Delete task">delete_outline</mat-icon>
-	<mat-card-title>
+	<mat-card-title class="text">
 		{{toDo.title}}
 	</mat-card-title>
-	<mat-card-content *ngIf="!toDo.checked">
+	<mat-card-content class="text" *ngIf="!toDo.checked">
 		{{toDo.comment}}
 	</mat-card-content>
 </mat-card>
